@@ -24,6 +24,8 @@ do
     echo "Process completed $i"
 done
 
+osmconvert 2*.osm -o=mexico2.osm
+osmconvert 3*.osm -o=mexico3.osm
+rm 2*.osm
+rm 3*.osm
 osmconvert *.osm -o=mexico.osm
-
-
