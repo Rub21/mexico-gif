@@ -1,25 +1,19 @@
 {
-  "name": "count-historical-osm",
+  "name": "osm-gif-animation",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "optimist": "^0.6.1",
-    "osmium": "https://github.com/osmcode/node-osmium/tarball/master",
-    "pg": "^4.4.1",
-    "underscore": "^1.8.2"
-  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Rub21/count-historical-osm.git"
+    "url": "git+https://github.com/Rub21/osm-gif-animation.git"
   },
   "author": "Ruben Lopez M <ruben@mapbox.com> (http://rub21.github.io/)",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Rub21/count-historical-osm/issues"
+    "url": "https://github.com/Rub21/osm-gif-animation/issues"
   },
-  "homepage": "https://github.com/Rub21/count-historical-osm#readme"
+  "homepage": "https://github.com/Rub21/osm-gif-animation#readme"
 }
