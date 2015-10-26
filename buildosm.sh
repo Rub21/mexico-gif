@@ -25,6 +25,5 @@ do
 done
 
 osmconvert *.osm -o=mexico.osm
-zip mexico.zip mexico.osm
-rm *.osm
+
 
