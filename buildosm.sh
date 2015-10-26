@@ -16,14 +16,11 @@ do
     gzip -d $i.osc.gz
     osmconvert $i.osc -B=boundary/$3 -o=$i.osm 
     #node index.js --osmfile=$i.osm
-    if(($i=$1)); then
-        osmconvert $i.osm -o=resutl.osm
-    else
-        osmconvert $i.osm resutl.osm -o=resutl.osm
-    if
     echo rm $i.osm
     rm $i.osc.gz
     rm $i.osc
     echo "Process completed $i"
 done
+
+osmconvert *.osm -o=mexico.osm
 
