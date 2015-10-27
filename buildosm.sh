@@ -1,8 +1,8 @@
 #!/bin/bash
-#url="http://planet.osm.org/replication/day/000/001/"
+url="http://planet.osm.org/replication/day/000/001/"
 #url="http://planet.osm.org/redaction-period/day-replicate/000/000/"
 ##per hour
-url="http://planet.openstreetmap.org/replication/hour/000/027/" 
+#url="http://planet.openstreetmap.org/replication/hour/000/027/" 
 for i in $(seq $1 $2)
 do	       
     if (($i<10)); then
@@ -15,17 +15,11 @@ do
        curl $url$i.osc.gz -o "$i.osc.gz"
     fi 
     echo "Processing file $i"
-    gzip -d $i.osc.gz
-    osmconvert $i.osc -B=boundary/$3 -o=$i.osm 
-    #node index.js --osmfile=$i.osm
+    osmconvert $i.osc.gz -B=boundary/$3 --complete-ways -o=$i.osm 
     echo rm $i.osm
     rm $i.osc.gz
-    rm $i.osc
     echo "Process completed $i"
 done
-
-osmconvert 2*.osm -o=mexico2.osm
-osmconvert 3*.osm -o=mexico3.osm
-rm 2*.osm
-rm 3*.osm
-osmconvert *.osm -o=mexico.osm
+osmconvert *.osm -o=osm.osm
+bzip2 osm.osm
+rm *.osm
