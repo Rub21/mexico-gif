@@ -3,7 +3,6 @@ url="https://s3.amazonaws.com/osm-changesets/day/000/001/"
 #url="http://planet.osm.org/redaction-period/day-replicate/000/000/"
 ##per hour
 #url="https://s3.amazonaws.com/osm-changesets/hour/000/027/"
-
 sed 's/@//g' $4 > temp
 sed 's/,/,/g' temp > u
 for i in $(seq $1 $2)
@@ -18,7 +17,7 @@ do
        curl $url$i.osc.gz -o "$i.osc.gz"
     fi 
     echo "Processing file $i"
-    #bounduary
+    #boundary
     if [ -n "$3" ]; then
       osmconvert $i.osc.gz -B=boundary/$3 --complete-ways -o=$i.osm 
     else
