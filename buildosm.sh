@@ -1,8 +1,8 @@
 #!/bin/bash
-url="http://planet.osm.org/replication/day/000/001/"
+url="https://s3.amazonaws.com/osm-changesets/day/000/001/"
 #url="http://planet.osm.org/redaction-period/day-replicate/000/000/"
 ##per hour
-#url="http://planet.openstreetmap.org/replication/hour/000/027/" 
+#url="https://s3.amazonaws.com/osm-changesets/hour/000/027/" 
 for i in $(seq $1 $2)
 do	       
     if (($i<10)); then
