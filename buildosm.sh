@@ -34,8 +34,8 @@ do
       done
       rm $i.osm
       osmconvert $i-*.osm -o=$i.osm
+      rm $i-*.osm
     fi
-
     rm $i.osc.gz
     echo "Process completed $i"
 done
