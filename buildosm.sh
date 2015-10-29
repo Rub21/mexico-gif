@@ -37,6 +37,7 @@ osmconvert *-temp.osm -o=temp.osm
 
 #users
 if [ -n "$4" ]; then
+  echo "Proces by users"
   users=("$(cat u)")
   IFS="," read -ra STR_ARRAY <<< "$users"
   for j in "${STR_ARRAY[@]}"
@@ -44,7 +45,7 @@ if [ -n "$4" ]; then
       osmfilter temp.osm --keep=@user=$j -o=$j-users.osm
   done
   osmconvert *-users.osm -o=osm.osm
-  rm $i-*.osm
+  rm *-users.osm
 else
   mv temp.osm osm.osm
 fi
