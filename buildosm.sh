@@ -52,4 +52,5 @@ fi
 
 bzip2 osm.osm
 rm u
+rm temp.osm
 rm temp
