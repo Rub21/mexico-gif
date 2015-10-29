@@ -20,33 +20,35 @@ do
     echo "Processing file $i"
     #boundary
     if [ -n "$3" ]; then
-      osmconvert $i.osc.gz -B=boundary/$3 --complete-ways -o=$i.osm 
+      osmconvert $i.osc.gz -B=boundary/$3 --complete-ways -o=$i-temp.osm 
     else
-      osmconvert $i.osc.gz --complete-ways -o=$i.osm 
-    fi
-    #users
-    if [ -n "$4" ]; then
-      users=("$(cat u)")
-      IFS="," read -ra STR_ARRAY <<< "$users"
-      for j in "${STR_ARRAY[@]}"
-      do
-          osmfilter $i.osm --keep=@user=$j -o=$i-$j.osm
-      done
-      rm $i.osm
-      osmconvert $i-*.osm -o=$i.osm
-      rm $i-*.osm
+      osmconvert $i.osc.gz --complete-ways -o=$i-temp.osm 
     fi
     rm $i.osc.gz
-
-    if(($i == $1)); then
-      osmconvert $i.osm --complete-ways -o=main.osm
-    else
-      updateosm $i.osm main.osm
-    fi
+    # if(($i == $1)); then
+    #   osmconvert $i.osm --complete-ways -o=main.osm
+    # else
+    #   updateosm $i.osm main.osm
+    # fi
     echo "Process completed $i"
 done
-# osmconvert *.osm -o=osm.osm
-# bzip2 osm.osm
-# rm *.osm
+
+osmconvert *-temp.osm -o=temp.osm
+
+#users
+if [ -n "$4" ]; then
+  users=("$(cat u)")
+  IFS="," read -ra STR_ARRAY <<< "$users"
+  for j in "${STR_ARRAY[@]}"
+    do
+      osmfilter temp.osm --keep=@user=$j -o=$j-users.osm
+  done
+  osmconvert *-users.osm -o=osm.osm
+  rm $i-*.osm
+else
+  mv temp.osm osm.osm
+fi
+
+bzip2 osm.osm
 rm u
 rm temp
