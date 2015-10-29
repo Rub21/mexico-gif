@@ -1,8 +1,8 @@
 #!/bin/bash
-#url="https://s3.amazonaws.com/osm-changesets/day/000/001/"
+url="https://s3.amazonaws.com/osm-changesets/day/000/001/"
 #url="http://planet.osm.org/redaction-period/day-replicate/000/000/"
 ##per hour
-url="https://s3.amazonaws.com/osm-changesets/hour/000/027/"
+#url="https://s3.amazonaws.com/osm-changesets/hour/000/027/"
 sed 's/@//g' $4 > temp
 sed 's/,/,/g' temp > u
 for i in $(seq $1 $2)
