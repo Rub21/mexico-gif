@@ -34,10 +34,10 @@ do
 done
 
 osmconvert *-temp.osm -o=temp.osm
-
+rm *-temp.osm 
 #users
 if [ -n "$4" ]; then
-  echo "Proces by users"
+  echo "==================== Proces by users ===================="
   users=("$(cat u)")
   IFS="," read -ra STR_ARRAY <<< "$users"
   for j in "${STR_ARRAY[@]}"
