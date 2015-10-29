@@ -30,7 +30,7 @@ do
       IFS="," read -ra STR_ARRAY <<< "$users"
       for j in "${STR_ARRAY[@]}"
       do
-          osmfilter $i.osm --keep=\"@user=$j\" -o=$i-$j.osm
+          osmfilter $i.osm --keep=@user=$j -o=$i-$j.osm
       done
       rm $i.osm
       osmconvert $i-*.osm -o=$i.osm
@@ -48,4 +48,5 @@ done
 # osmconvert *.osm -o=osm.osm
 # bzip2 osm.osm
 # rm *.osm
-# rm u
+rm u
+rm temp
