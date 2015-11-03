@@ -26,13 +26,14 @@ do
     # fi
     echo "Process completed $i"
 done
+echo "====================== Merge files ======================"
 # Merge file
 osmconvert *.osc.gz -o=temp.osm
 rm *.osc.gz
 
 #boundary
 if [ -n "$3" ]; then
-  echo "==================== Clip for $3 ===================="
+  echo "====================== Clip for $3 ======================"
     osmconvert temp.osm -B=$3 --complete-ways -o=b-temp.osm
     mv b-temp.osm temp.osm
 fi
