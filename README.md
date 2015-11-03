@@ -26,7 +26,7 @@ Add the  users in  on file `users` and execute
 `./buildosm.sh 137 148 af.poly users`
 
 
-The numbers mean came from http://planet.osm.org/replication/day/000/001/
+The number are the range from replication files: http://planet.osm.org/replication/day/000/001/
 
 - [137](http://planet.osm.org/replication/day/000/001/137.osc.gz) Date : 2015-10-29 00:06 
 - [142](http://planet.osm.org/replication/day/000/001/142.osc.gz) Date : 2015-10-24 00:06 
