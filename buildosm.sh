@@ -27,8 +27,8 @@ do
     echo "Process completed $i"
 done
 # Merge file
-osmconvert *osc.gz -o=temp.osm
-rm $i.osc.gz
+osmconvert *.osc.gz -o=temp.osm
+rm *.osc.gz
 
 #boundary
 if [ -n "$3" ]; then
