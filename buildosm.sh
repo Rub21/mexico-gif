@@ -18,13 +18,7 @@ do
        curl $url$i.osc.gz -o "$i.osc.gz"
     fi 
     echo "Processing file $i"
-    #boundary
-    if [ -n "$3" ]; then
-      osmconvert $i.osc.gz -B=boundary/$3 --complete-ways -o=$i-temp.osm 
-    else
-      osmconvert $i.osc.gz --complete-ways -o=$i-temp.osm 
-    fi
-    rm $i.osc.gz
+
     # if(($i == $1)); then
     #   osmconvert $i.osm --complete-ways -o=main.osm
     # else
@@ -32,9 +26,17 @@ do
     # fi
     echo "Process completed $i"
 done
+# Merge file
+osmconvert *osc.gz -o=temp.osm
+rm $i.osc.gz
 
-osmconvert *-temp.osm -o=temp.osm
-rm *-temp.osm 
+#boundary
+if [ -n "$3" ]; then
+  echo "==================== Clip for $3 ===================="
+    osmconvert temp.osm -B=$3 --complete-ways -o=b-temp.osm
+    mv b-temp.osm temp.osm
+fi
+
 #users
 if [ -n "$4" ]; then
   echo "==================== Proces by users ===================="
